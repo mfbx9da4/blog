@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=”utf-8”> 
+	<title>Blog</title>
+</head>
+<body> 
+<style type="text/css" media="screen">
+    #editor {
+        width: 500px;
+        height: 150px;
+    }	
+</style>
+
+ <script type="text/x-handlebars" id="application">
+	 <div class="container">
+		 {{#link-to "posts"}}<h1>Blog of David Adler</h1>{{/link-to}}
+
+		 {{outlet}}
+
+	 </div>
+ </script>
+
+ <script type="text/x-handlebars" id="index">
+	{{#link-to "posts"}} Go to the posts page {{/link-to}}
+</script>
+
+ <script type="text/x-handlebars" id="posts">
+	{{#link-to "posts.create" class="create-btn"}} Add post {{/link-to}}
+	<div>Posts: {{postsCount}}</div>
+	<ol class="posts-listing">
+		{{#each post in controller}}
+			<li>
+			{{#link-to "post" post}}
+				{{post.title}}
+			{{/link-to}}
+			</li>
+		{{else}}
+			<li>no posts… </li>
+		{{/each}}
+	</ol>
+	{{outlet}}
+ </script>
+
+<script type="text/x-handlebars" id="post">
+	{{#if deleteMode}}
+		<div class="confirm-box">
+			<h4>Really?</h4>
+			<button {{action "confirmDelete"}}> yes </button>
+			<button {{action "cancelDelete"}}> no </button>
+		</div>
+	{{/if}}
+
+	 <div class="post-profile">
+		<button {{action "edit"}}>Edit</button>
+		<button {{action "delete"}}>Delete</button>
+
+		 <h2>{{title}}</h2>
+		 <article>{{formatMarkdown article}}</article>
+		 <hr>
+		 <span>Created {{formatDate dateCreated}},</span>
+		 <span>modified {{formatDate dateModified}}.</span>
+		{{outlet}}
+	</div>
+</script>
+
+<script type="text/x-handlebars" id="post/edit">
+	<hr>
+	<div class="post-edit">
+		 <label>Post title</label>
+		 {{input value=title}}<br>
+
+		 <label>Post content</label>
+		 {{textarea name="editor" value=article}}<br>
+		 <div id="editor"></div>
+		 {{aceEditor}}
+		<button {{action "save"}}> ok </button>
+	</div>
+</script>
+
+<script src="libs/ace-builds/src/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="libs/ace-builds/src/theme-monokai.js" type="text/javascript" charset="utf-8"></script>
+<script src="libs/ace-builds/src/mode-markdown.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript" src="libs/Markdown.Converter.js"></script>
+<script type="text/javascript" src="libs/Markdown.Editor.js"></script>
+<script type="text/javascript" src="libs/Markdown.Sanitizer.js"></script>
+<script src="libs/jquery-2.0.3.min.js"></script>
+<script src="libs/jqueryui.js"></script>
+<script src="libs/moment.min.js"></script>
+<script src="libs/handlebars-1.1.2.js"></script>
+<script src="libs/ember-1.2.0.js"></script>
+<script src="libs/ember-data.js"></script>
+
+<script src="libs/localstorage_adapter.js"></script>
+
+<script src="app.js"></script>
+<script src="router.js"></script>
+<script src="store.js"></script>
+
+<script src="models/post.js"></script>
+<script src="models/posts.js"></script>
+
+<script src="routes/postsRoute.js"></script>
+<script src="routes/postsCreateRoute.js"></script>
+<script src="routes/postRoute.js"></script>
+<script src="routes/postEditRoute.js"></script>
+<script src="routes/indexRoute.js"></script> <!-- 404 page -->
+
+<script src="controllers/postsController.js"></script>
+<script src="controllers/postsCreateController.js"></script>
+<script src="controllers/postController.js"></script>
+<script src="controllers/postEditController.js"></script>
+
+<script src="helpers/helpers.js"></script>
+
+
+</body>
+</html>
