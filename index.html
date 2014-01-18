@@ -89,18 +89,30 @@
 	 </script>
 
 	<script type="text/x-handlebars" id="post">
+		{{#if deleteMode}}
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h4 class="modal-title">Really?</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p>Permanently delete record?</p>
+			      </div>
+			      <div class="modal-footer">
+						<button data-dismiss="modal" class="btn btn-danger" {{action "confirmDelete"}}> yes </button>
+						<button data-dismiss="modal" class="btn btn-default" {{action "cancelDelete"}}> no </button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		{{/if}}
+
 		<div class="col-md-6">
-			{{#if deleteMode}}
-				<div class="confirm-box">
-					<h4>Really?</h4>
-					<button class="btn btn-danger" {{action "confirmDelete"}}> yes </button>
-					<button class="btn btn-default" {{action "cancelDelete"}}> no </button>
-				</div>
-			{{/if}}
 
 			 <div class="post-profile">
 				<button class="btn btn-default" {{action "edit"}}>Edit</button>
-				<button class="btn btn-danger" {{action "delete"}}>Delete</button>
+				<button data-toggle="modal" data-target="#myModal"  class="btn btn-danger" {{action "delete"}}>Delete</button>
 
 				 <h2>{{title}}</h2>
 				 <article>{{formatMarkdown article}}</article>
@@ -115,6 +127,7 @@
 
 	<script type="text/x-handlebars" id="post/edit">
 	<div class="col-md-6">
+		<button class="btn btn-success"{{action "save"}}> ok </button>
 		<div class="post-edit">
 			 <h2>Post title</h2>
 			 {{input class="form-control" value=title}}<br>
@@ -123,7 +136,6 @@
 			 <div id="editor"></div>
 			 {{aceEditor}}
 			 <br>
-			<button class="btn btn-success"{{action "save"}}> ok </button>
 		</div>
 	</div>
 

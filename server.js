@@ -45,6 +45,7 @@ app.configure(function() {
     app.use(express.json());
 });
 
+var debug = require('debug')
 var http = require('http');
 var path = require('path');
 var mongo = require('mongodb');
@@ -152,7 +153,6 @@ var add_post = function(db) {
         if (!title || !article || !dateCreated || !dateModified) {
             res.send(404, 'hey, I am missing some info')
         }
-        q
 
         // Set our collection
         var collection = db.get('postcollection');
@@ -166,19 +166,42 @@ var add_post = function(db) {
 app.post('/posts', add_post(db));
 
 var update_post = function(db) {
-    var collection = db.get('postcollection');
-
-    var promise = collection.update({id: req.params.id}, req.body.post)
-    promise.on('complete', respond)
-
     return function(req, res) {
-        if ( !! req.body.post.id && posts[req.body.post.id] != null) {
-            posts[req.body.post.id] = req.body.post;
-            res.send("ok");
-        }
-        res.send("ko");
+        var collection = db.get('postcollection');
+        var post = req.body.post;
+        var id = Number(req.params.id)
+        post.id = id;
+        collection.findAndModify({id: id}, post, function(e, doc) {console.log(doc)});
+        collection.find({id: Number(req.params.id)}, {}, function(e, docs) {res.send(200, {'post': docs});
+        });
+
     }
 }
+// var respond = function(err, doc) {
+//     if (err) {
+//         res.send(404)
+//     } else {
+//         res.send({
+//             'post': doc
+//         })
+//     }
+// };
+// collection.findAndModify({
+//     id: id
+// }, {
+//     update: post
+// }, {
+// }, function(err, post) {
+//     console.log(post)
+//     if (err) res.json(500, err);
+//     else if (post) res.json({'post':post});
+//     else res.json(404);
+// });
+
+// var promise = collection.update({
+//     id: req.params.id
+// }, req.body.post)
+// promise.on('complete', respond)
 
 // update post
 app.put('/posts/:id', update_post(db));
@@ -196,4 +219,5 @@ app.delete('/posts/:id', function(req, res) {
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
+    debug('listening');
 });
