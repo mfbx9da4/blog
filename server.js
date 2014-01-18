@@ -171,37 +171,9 @@ var update_post = function(db) {
         var post = req.body.post;
         var id = Number(req.params.id)
         post.id = id;
-        collection.findAndModify({id: id}, post, function(e, doc) {console.log(doc)});
-        collection.find({id: Number(req.params.id)}, {}, function(e, docs) {res.send(200, {'post': docs});
-        });
-
+        collection.findAndModify({id: id}, post, function(e, doc) {res.send(200, {'post': doc})});
     }
 }
-// var respond = function(err, doc) {
-//     if (err) {
-//         res.send(404)
-//     } else {
-//         res.send({
-//             'post': doc
-//         })
-//     }
-// };
-// collection.findAndModify({
-//     id: id
-// }, {
-//     update: post
-// }, {
-// }, function(err, post) {
-//     console.log(post)
-//     if (err) res.json(500, err);
-//     else if (post) res.json({'post':post});
-//     else res.json(404);
-// });
-
-// var promise = collection.update({
-//     id: req.params.id
-// }, req.body.post)
-// promise.on('complete', respond)
 
 // update post
 app.put('/posts/:id', update_post(db));
@@ -209,11 +181,9 @@ app.put('/posts/:id', update_post(db));
 
 
 app.delete('/posts/:id', function(req, res) {
-    if ( !! req.params.id && posts[req.params.id] != null) {
-        delete posts[req.params.id];
-        res.send("ok");
-    }
-    res.send("ko");
+    var collection = db.get('postcollection');
+    var id = Number(req.params.id)
+    collection.remove({id: id}, {}, function(e, doc) {res.send(200)});
 });
 
 
