@@ -1,39 +1,39 @@
 var _posts = [{
-        id: 0,
-        title: 'Julien Knebel',
-        article: 'Freelance web & print designer + front-end developer',
-        dateCreated: 'Fri Aug 09 2013 15:13:16 GMT+0200 (CEST)',
-        dateModified: 'Fri Aug 09 2013 15:13:16 GMT+0200 (CEST)'
-    }, {
-        id: 1,
-        title: 'Sponge Bob',
-        article: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-        dateCreated: 'Fri Aug 07 2013 10:10:10 GMT+0200 (CEST)',
-        dateModified: 'Fri Aug 07 2013 10:10:10 GMT+0200 (CEST)'
-    },{
-        id: 2,
-        title: 'Sponge Bob',
-        article: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-        dateCreated: 'Fri Aug 07 2013 10:10:10 GMT+0200 (CEST)',
-        dateModified: 'Fri Aug 07 2013 10:10:10 GMT+0200 (CEST)'
-    }, {
-        id: 3,
-        title: 'Julien Knebel',
-        article: 'Freelance web & print designer + front-end developer',
-        dateCreated: 'Mon Aug 17 2012 15:43:12 GMT+0200 (CEST)',
-        dateModified: 'Mon Aug 17 2012 15:43:12 GMT+0200 (CEST)'
-    }, {
-        id: 4,
-        title: 'Sponge Bob',
-        article: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-        dateCreated: 'Tue May 22 2013 12:12:12 GMT+0200 (CEST)',
-        dateModified: 'Tue May 22 2013 12:12:12 GMT+0200 (CEST)'
-    }, {
-        id: 5,
-        title: 'Dean Winchester',
-        article: ':)',
-        dateCreated: 'Mon Jan 30 2013 12:12:12 GMT+0200 (CEST)',
-        dateModified: 'Mon Jan 30 2013 12:12:12 GMT+0200 (CEST)'
+    id: 0,
+    title: 'Julien Knebel',
+    article: 'Freelance web & print designer + front-end developer',
+    dateCreated: 'Fri Aug 09 2013 15:13:16 GMT+0200 (CEST)',
+    dateModified: 'Fri Aug 09 2013 15:13:16 GMT+0200 (CEST)'
+}, {
+    id: 1,
+    title: 'Sponge Bob',
+    article: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
+    dateCreated: 'Fri Aug 07 2013 10:10:10 GMT+0200 (CEST)',
+    dateModified: 'Fri Aug 07 2013 10:10:10 GMT+0200 (CEST)'
+}, {
+    id: 2,
+    title: 'Sponge Bob',
+    article: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
+    dateCreated: 'Fri Aug 07 2013 10:10:10 GMT+0200 (CEST)',
+    dateModified: 'Fri Aug 07 2013 10:10:10 GMT+0200 (CEST)'
+}, {
+    id: 3,
+    title: 'Julien Knebel',
+    article: 'Freelance web & print designer + front-end developer',
+    dateCreated: 'Mon Aug 17 2012 15:43:12 GMT+0200 (CEST)',
+    dateModified: 'Mon Aug 17 2012 15:43:12 GMT+0200 (CEST)'
+}, {
+    id: 4,
+    title: 'Sponge Bob',
+    article: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
+    dateCreated: 'Tue May 22 2013 12:12:12 GMT+0200 (CEST)',
+    dateModified: 'Tue May 22 2013 12:12:12 GMT+0200 (CEST)'
+}, {
+    id: 5,
+    title: 'Dean Winchester',
+    article: ':)',
+    dateCreated: 'Mon Jan 30 2013 12:12:12 GMT+0200 (CEST)',
+    dateModified: 'Mon Jan 30 2013 12:12:12 GMT+0200 (CEST)'
 }]
 
 var express = require('express');
@@ -80,9 +80,9 @@ if ('development' == app.get('env')) {
 }
 
 app.all('/*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
 });
 
 get_posts = function(db) {
@@ -129,7 +129,7 @@ var add_post = function(db) {
                 });
             }
         };
-        var insert_post = function (count) {
+        var insert_post = function(count) {
             // Submit to the DB
             collection.insert({
                 'title': title,
@@ -137,7 +137,7 @@ var add_post = function(db) {
                 'dateCreated': dateCreated,
                 'dateModified': dateModified,
                 'id': count
-            }, complete_insert);            
+            }, complete_insert);
         };
         var complete_count = function(err, count) {
             insert_post(count)
@@ -152,13 +152,12 @@ var add_post = function(db) {
         if (!title || !article || !dateCreated || !dateModified) {
             res.send(404, 'hey, I am missing some info')
         }
+        q
 
         // Set our collection
         var collection = db.get('postcollection');
         var promise = collection.count({})
         promise.on('complete', complete_count);
-        
-
 
     }
 };
@@ -166,27 +165,23 @@ var add_post = function(db) {
 // new post
 app.post('/posts', add_post(db));
 
-var deleteme = function(req, res) {
-    console.log(req.body)
-    // res.send(201, );
-    // console.log(req.body)
-    // if (!!req.body.post.id && posts[req.body.post.id] == null){
-    //     posts[req.body.post.id] = req.body.post;
-    //     res.send("ok");
-    // }
-    // res.send("ko");
+var update_post = function(db) {
+    var collection = db.get('postcollection');
+
+    var promise = collection.update({id: req.params.id}, req.body.post)
+    promise.on('complete', respond)
+
+    return function(req, res) {
+        if ( !! req.body.post.id && posts[req.body.post.id] != null) {
+            posts[req.body.post.id] = req.body.post;
+            res.send("ok");
+        }
+        res.send("ko");
+    }
 }
 
 // update post
-app.put('/posts/:id', function(req, res) {
-    console.log('update post called')
-    if ( !! req.body.post.id && posts[req.body.post.id] != null) {
-        posts[req.body.post.id] = req.body.post;
-        res.send("ok");
-    }
-    res.send("ko");
-});
-// app.put('/posts/:id', add_post(db))
+app.put('/posts/:id', update_post(db));
 
 
 
