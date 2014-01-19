@@ -25,22 +25,22 @@ module.exports = function(grunt) {
                     "style/js/bootstrap.min.js",
                     "libs/localstorage_adapter.js"
                 ],
-                dest: 'build/libs.js'
+                dest: 'output/libs.js'
             },
             app: {
                 // the files to concatenate
                 src: [
-                    'app.js',
-                    'router.js',
-                    'store.js',
-                    'components/*.js',
-                    'controllers/*.js',
-                    'helpers/*.js',
-                    'models/*.js',
-                    'routes/*.js',
-                    'views/*.js'
+                    'app/app.js',
+                    'app/router.js',
+                    'app/store.js',
+                    'app/components/*.js',
+                    'app/controllers/*.js',
+                    'app/helpers/*.js',
+                    'app/models/*.js',
+                    'app/routes/*.js',
+                    'app/views/*.js'
                 ],
-                dest: 'build/app.js'
+                dest: 'output/app.js'
             }
         },
         uglify: {
@@ -48,12 +48,12 @@ module.exports = function(grunt) {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             app: {
-                src: 'build/app.js',
-                dest: 'build/app.min.js'
+                src: 'output/app.js',
+                dest: 'output/app.min.js'
             },
             libs: {
-                src: 'build/libs.js',
-                dest: 'build/libs.min.js'
+                src: 'output/libs.js',
+                dest: 'output/libs.min.js'
             }
         },
         jshint: {
