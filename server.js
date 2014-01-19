@@ -15,7 +15,6 @@ var monk = require('monk');
 // var db = monk('localhost:27017/nodetest1');
 var MONGOHQ_URL = 'mongodb://david:dave_adler123@linus.mongohq.com:10027/nodetest1'
 var db = monk(MONGOHQ_URL);
-
 //CORS middleware
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
