@@ -7116,15 +7116,4 @@ td.visible-print {
     display: none !important;
   }
 }
-body {
-  min-height: 2000px;
-}
 
-.navbar-static-top {
-  margin-bottom: 19px;
-}
-
-#editor {
-  width: 100%;
-  height: 300px;
-}

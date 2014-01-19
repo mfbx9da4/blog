@@ -1,41 +1,3 @@
-var _posts = [{
-    id: 0,
-    title: 'Julien Knebel',
-    article: 'Freelance web & print designer + front-end developer',
-    dateCreated: 'Fri Aug 09 2013 15:13:16 GMT+0200 (CEST)',
-    dateModified: 'Fri Aug 09 2013 15:13:16 GMT+0200 (CEST)'
-}, {
-    id: 1,
-    title: 'Sponge Bob',
-    article: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-    dateCreated: 'Fri Aug 07 2013 10:10:10 GMT+0200 (CEST)',
-    dateModified: 'Fri Aug 07 2013 10:10:10 GMT+0200 (CEST)'
-}, {
-    id: 2,
-    title: 'Sponge Bob',
-    article: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-    dateCreated: 'Fri Aug 07 2013 10:10:10 GMT+0200 (CEST)',
-    dateModified: 'Fri Aug 07 2013 10:10:10 GMT+0200 (CEST)'
-}, {
-    id: 3,
-    title: 'Julien Knebel',
-    article: 'Freelance web & print designer + front-end developer',
-    dateCreated: 'Mon Aug 17 2012 15:43:12 GMT+0200 (CEST)',
-    dateModified: 'Mon Aug 17 2012 15:43:12 GMT+0200 (CEST)'
-}, {
-    id: 4,
-    title: 'Sponge Bob',
-    article: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-    dateCreated: 'Tue May 22 2013 12:12:12 GMT+0200 (CEST)',
-    dateModified: 'Tue May 22 2013 12:12:12 GMT+0200 (CEST)'
-}, {
-    id: 5,
-    title: 'Dean Winchester',
-    article: ':)',
-    dateCreated: 'Mon Jan 30 2013 12:12:12 GMT+0200 (CEST)',
-    dateModified: 'Mon Jan 30 2013 12:12:12 GMT+0200 (CEST)'
-}]
-
 var express = require('express');
 
 var app = express();
@@ -50,7 +12,9 @@ var http = require('http');
 var path = require('path');
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/nodetest1');
+// var db = monk('localhost:27017/nodetest1');
+var MONGOHQ_URL = 'mongodb://david:dave_adler123@linus.mongohq.com:10027/nodetest1'
+var db = monk(MONGOHQ_URL);
 
 //CORS middleware
 var allowCrossDomain = function(req, res, next) {
@@ -171,7 +135,13 @@ var update_post = function(db) {
         var post = req.body.post;
         var id = Number(req.params.id)
         post.id = id;
-        collection.findAndModify({id: id}, post, function(e, doc) {res.send(200, {'post': doc})});
+        collection.findAndModify({
+            id: id
+        }, post, function(e, doc) {
+            res.send(200, {
+                'post': doc
+            })
+        });
     }
 }
 
@@ -183,7 +153,11 @@ app.put('/posts/:id', update_post(db));
 app.delete('/posts/:id', function(req, res) {
     var collection = db.get('postcollection');
     var id = Number(req.params.id)
-    collection.remove({id: id}, {}, function(e, doc) {res.send(200)});
+    collection.remove({
+        id: id
+    }, {}, function(e, doc) {
+        res.send(200)
+    });
 });
 
 
@@ -191,3 +165,5 @@ http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
     debug('listening');
 });
+
+
