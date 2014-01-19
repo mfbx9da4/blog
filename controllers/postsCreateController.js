@@ -1,7 +1,7 @@
 App.PostsCreateController = Ember.ObjectController.extend({
 	actions: {
 		save: function() {
-			var cont = this
+			var cont = this;
 
 			// just before saving, we set the creationDate
 			this.get('model').set('dateCreated', new Date());
@@ -11,7 +11,7 @@ App.PostsCreateController = Ember.ObjectController.extend({
 			var newPost = this.store.createRecord('post', this.get('model'));
 			// console.log(this.get('model.length'))
 			newPost.save().then(function () {
-				cont.transitionToRoute('post', newPost)
+				cont.transitionToRoute('post', newPost);
 			});
 		}
 	}

@@ -7,7 +7,7 @@ app.configure(function() {
     app.use(express.json());
 });
 
-var debug = require('debug')
+var debug = require('debug');
 var http = require('http');
 var path = require('path');
 var mongo = require('mongodb');
@@ -23,7 +23,7 @@ var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 
     next();
-}
+};
 
 
 // all environments
@@ -59,7 +59,7 @@ get_posts = function(db) {
             });
         });
     };
-}
+};
 
 // list of post
 app.get('/posts', get_posts(db));
@@ -74,8 +74,8 @@ get_post = function(db) {
                 'post': docs
             });
         });
-    }
-}
+    };
+};
 
 
 // get post by id
@@ -105,7 +105,7 @@ var add_post = function(db) {
             }, complete_insert);
         };
         var complete_count = function(err, count) {
-            insert_post(count)
+            insert_post(count);
         };
 
         // Get our form values. These rely on the 'name' attributes
@@ -115,15 +115,14 @@ var add_post = function(db) {
         var dateModified = req.body.post.dateModified;
 
         if (!title || !article || !dateCreated || !dateModified) {
-            res.send(404, 'hey, I am missing some info')
+            res.send(404, 'hey, I am missing some info');
         }
 
         // Set our collection
         var collection = db.get('postcollection');
-        var promise = collection.count({})
+        var promise = collection.count({});
         promise.on('complete', complete_count);
-
-    }
+    };
 };
 
 // new post
@@ -133,30 +132,28 @@ var update_post = function(db) {
     return function(req, res) {
         var collection = db.get('postcollection');
         var post = req.body.post;
-        var id = Number(req.params.id)
+        var id = Number(req.params.id);
         post.id = id;
         collection.findAndModify({
             id: id
         }, post, function(e, doc) {
             res.send(200, {
-                'post': doc
-            })
+                'post': post
+            });
         });
-    }
-}
+    };
+};
 
 // update post
 app.put('/posts/:id', update_post(db));
 
-
-
 app.delete('/posts/:id', function(req, res) {
     var collection = db.get('postcollection');
-    var id = Number(req.params.id)
+    var id = Number(req.params.id);
     collection.remove({
         id: id
     }, {}, function(e, doc) {
-        res.send(200)
+        res.send(200);
     });
 });
 
