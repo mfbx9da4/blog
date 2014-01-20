@@ -35,7 +35,7 @@ exports.add_post = function(db) {
                 });
             }
         };
-        exports.insert_post = function(count) {
+        this.insert_post = function(count) {
             // Submit to the DB
             collection.insert({
                 'title': title,

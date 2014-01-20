@@ -48,6 +48,7 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var posts = require('./server/posts');
 var LOCAL_DB_URL = 'localhost:27017/nodetest1';
+
 setup_monk(function (db) {
 
     app.configure(function() {
