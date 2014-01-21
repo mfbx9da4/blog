@@ -102,6 +102,7 @@ Ember.Handlebars.helper('aceEditor', function() {
         editor.getSession().setMode(new MarkdownMode());
         var textarea = $('textarea[name="editor"]').hide();
         editor.getSession().setValue(textarea.val());
+        editor.getSession().setUseWrapMode(true);
         editor.getSession().on('change', function() {
             textarea.val(editor.getSession().getValue()).trigger('change');
         });
@@ -142,4 +143,14 @@ App.PostsCreateRoute = Ember.Route.extend({
         var posts = this.store.find('post');
         return posts;
     }
-});
+});// App.PostEditView = Ember.TextField.extend({
+//  formBlurred: null, // passed to the view helper as formBlurred=controllerPropertyName
+//  change: function(evt) {
+//      // should save on ctrl + s
+//  },
+//  didInsertElement: function() {
+//      this.set('elementIsInserted', true);
+//      this._super();
+//  },
+// });
+// // {{view PostEdit value=article}}

@@ -3,14 +3,14 @@ var setup_monk = function(fn) {
     // if connected uses mongohq db else uses local db
     // NB: must export mongohq url as env var.
     // require('monk')(process.env.MONGOHQ_URL).get('postcollection').find({}, function(e,d){console.log(e || d)})
-
+    var db;
     if (process.argv[2] == "local") {
         console.log('Override: using local db'.yellow);
-        var db = monk(LOCAL_DB_URL);
+        db = monk(LOCAL_DB_URL);
         fn(db);   
     } else if (process.argv[2] == "remote") {
         console.log('Override: using remote db'.yellow);
-        var db = monk(process.env.MONGOHQ_URL);
+        db = monk(process.env.MONGOHQ_URL);
         fn(db);
     } else {
         var db_url, connected_to_internet;
@@ -21,18 +21,18 @@ var setup_monk = function(fn) {
                     db_url = LOCAL_DB_URL;
                     console.log('MONGOHQ_URL env var not set, using local db'.red);
                 }
-                var db = monk(db_url, {}, function () {
+                db = monk(db_url, {}, function () {
                         console.log('Todo bom, remote MONGOHQ_URL for db'.green);                
                         fn(db);
                     })
                     .on('error', function (e){
-                        var db = monk(LOCAL_DB_URL);
-                        console.log('Error connecting to mongohq, using local db'.red)
+                        db = monk(LOCAL_DB_URL);
+                        console.log('Error connecting to mongohq, using local db'.red);
                         fn(db);
-                    })
+                    });
             }).on('error', function(e) {
                 console.log('You are not connected to the internet, using local db'.red);
-                var db = monk(LOCAL_DB_URL);
+                db = monk(LOCAL_DB_URL);
                 fn(db);
             });
     }
