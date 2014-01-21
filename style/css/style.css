@@ -12,3 +12,8 @@ body {
 .navbar-static-top {
   margin-bottom: 19px;
 }
+
+::selection {
+	background-color: #F7208B;
+	color: white;
+}
