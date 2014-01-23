@@ -1,0 +1,199 @@
+/*!
+ *  Simple - Minimal, responsive resume
+ *  Copyright 2013 prettyspoon.com
+ *  Author: Uvis Grinfelds
+ */
+/* Borders and Spacing */
+body {
+  font-family: Source Sans Pro, Open Sans, Helvetica, Arial, sans-serif;
+  background-color: #1F1F1F;
+  color: black;
+}
+.container-cv {
+  font-weight: 300;
+  color: black;
+  max-width: 700px;
+  background-color: #fff;
+  padding: 25px 50px;
+  margin: 20px auto;
+}
+.row {
+  border-bottom: 1px solid #dddddd;
+}
+.col-md-9 {
+  padding-top: 10px;
+}
+article {
+  padding: 20px 0;
+}
+footer {
+  text-align: right;
+  padding-top: 10px;
+}
+ul {
+  list-style: none;
+  margin: 0px;
+}
+.skills {
+  border: 0;
+}
+/* Links */
+.a-cv {
+  color: #000000;
+  border-bottom: 1px solid #dddddd;
+  -o-transition: color 0.5s ease-out, background 0.6s ease-in;
+  -ms-transition: color 0.5s ease-out, background 0.6s ease-in;
+  -moz-transition: color 0.5s ease-out, background 0.6s ease-in;
+  -webkit-transition: color 0.5s ease-out, background 0.6s ease-in;
+  /* ...and now override with proper CSS property */
+
+  transition: color 0.5s ease-out, background 0.6s ease-in;
+}
+.a-cv:hover {
+  color: #333333;
+  background: #F9F9F9;
+  text-decoration: none;
+}
+.footer .a-cv {
+  padding: 0 ;
+}
+/* Typography */
+h1, h2, h3 {
+  margin-top: 8px;
+}
+.title h2 {
+  font-size: 18px;
+  font-weight: 200;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: Open Sans, Source Sans Pro, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color: #000;
+  line-height: 100%;
+}
+h1 {
+  font-size: 38px;
+  line-height: 50px;
+  padding-top: 30px;
+  font-weight: 700;
+  font-family: Open Sans;
+  text-align: center;
+  letter-spacing: 1px;
+}
+h2 {
+  font-size: 21px;
+  text-align: center;
+}
+h3 {
+  font-size: 20px ;
+}
+h4 {
+  font-size: 16px ;
+}
+h5 {
+  font-size: 12px;
+}
+strong {
+  font-weight: 400;
+}
+p {
+  text-indent: 22px;
+  font-size: 16px;
+  margin: 0px;
+}
+.welcome {
+  font-size: 24px;
+  text-indent: 0px;
+  line-height: 30px;
+}
+.auth-cv {
+  text-align: right;
+  font-size: 16px;
+}
+/* Contact */
+.social .a-cv {
+  font-size: 20px;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+.social {
+  padding: 30px 0px;
+  font-size: 14px;
+  line-height: 23px;
+}
+.social li {
+  list-style: none;
+}
+/* Images */
+.img {
+  border: 1px solid #dddddd;
+  margin: 15px;
+  float: left;
+  box-shadow: 0px 0px 20px 1px #888;
+}
+/* Responsive */
+@media print and (max-width: 800px) {
+  body {
+    display: block;
+    padding: 0px;
+  }
+  .container-cv {
+    margin: -20px auto;
+  }
+  .social ul > li {
+    clear: both;
+    color: red;
+  }
+}
+    @media print and (min-width: 480px) { 
+      .col-xs-12 {
+        float: none; 
+        width: 100%;
+      } 
+    }
+/*@media (max-width: 600px) {
+  .social {
+    margin-top: 10px;
+  }
+  .social ul li {
+    display: inline-block;
+  }
+  .social ul {
+    margin-top: 21px;
+  }
+}
+@media (max-width: 480px) {
+  .container-cv {
+    padding: 15px ;
+  }
+}
+@media (max-width: 320px) {
+  .container-cv {
+    padding: 15px ;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 16px;
+  }
+  .social ul li {
+    display: block;
+  }
+  .social ul {
+    margin-top: 16px;
+    padding: 0 34px;
+  }
+  article {
+    padding: 10px 0;
+  }
+  .col-md-9 {
+    padding-top: 0px;
+  }
+}
+
+*/

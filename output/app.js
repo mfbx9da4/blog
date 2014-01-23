@@ -1,10 +1,13 @@
-window.App = Ember.Application.create();App.Router.map(function(){
-  this.resource('posts', function(){
-    this.resource('post', { path:'/:post_id' }, function(){
-      this.route('edit');
-    });
-    this.route('create');
-  });
+window.App = Ember.Application.create();App.Router.map(function() {
+	this.resource('posts', function() {
+		this.resource('post', {
+			path: '/:post_id'
+		}, function() {
+			this.route('edit');
+		});
+		this.route('create');
+	});
+	this.resource('cv-portugues');
 });// App.ApplicationAdapter = DS.LSAdapter;
 DS.Store.create({
   revision: 12,
@@ -112,6 +115,8 @@ Ember.Handlebars.helper('aceEditor', function() {
   article       : DS.attr('string'),
   dateCreated   : DS.attr('date'),
   dateModified  : DS.attr('date')
+});App.CVRoute = Ember.Route.extend({
+	
 });App.IndexRoute = Ember.Route.extend({
 	redirect: function(){
 		this.transitionTo('posts');

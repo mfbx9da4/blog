@@ -70,8 +70,13 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['<%= jshint.files %>'],
-            tasks: ['jshint', 'concat:app', 'uglify:app']
+            files: ['<%= jshint.files %>', 'index.html', 'style/css/*.css'],
+            tasks: ['jshint', 'concat:app', 'uglify:app'],
+            options: {
+                livereload: {
+                    port: 8080
+                }
+            }
         }
 
     });

@@ -4,8 +4,8 @@
 	<meta charset=”utf-8”> 
 	<title>Blog</title>
     <!-- Bootstrap core CSS -->
-    <link href="style/css/style.css" rel="stylesheet">
     <link href="style/css/cyborg-bootstrap.min.css" rel="stylesheet">
+    <link href="style/css/font-awesome.min.css" rel="stylesheet">
     <!-- <link href="style/css/bootstrap-theme.css" rel="stylesheet"> -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -15,9 +15,9 @@
     <![endif]-->
 </head>
 <body> 
-
-	 <script type="text/x-handlebars" id="application">
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
+<script src="http://localhost:8080/livereload.js"></script>
+	<script type="text/x-handlebars" id="application">
+    <div id="navbar" class="navbar navbar-default navbar-static-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -36,6 +36,17 @@
               <ul class="dropdown-menu">
                 <li><a href="http://davidadler.me">Interactive</a></li>
                 <li><a href="http://davidadler.me/static/files/cv.pdf">PDF</a></li>
+                <li class="divider"></li>
+                <li>
+                	{{#link-to "cv-portugues"}}
+                		<div class="dropdown-flag-container">
+					    <img src="style/img/flags.png" alt="brazil flag"
+					         width="342" height="174"
+					         style="position:absolute; top: -143px; left: -21px;" />
+						</div>
+                		Português
+            		{{/link-to}}
+            	</li>
               </ul>
             </li>
             <li><a href="http://davidadlersapp.appspot.com/#contact">Contact</a></li>
@@ -52,9 +63,7 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-		 <div class="container">
 			 {{outlet}}
-		 </div>
 </div>
 
 	 </script>
@@ -64,6 +73,9 @@
 	</script>
 
 	 <script type="text/x-handlebars" id="posts">
+    	<link href="style/css/style.css" rel="stylesheet">
+	 <div class="container">
+
 		{{#link-to "posts.create" class="create-btn"}} Add post {{/link-to}}
 		<div>Posts: {{postsCount}}</div>
 		<ol class="posts-listing">
@@ -82,6 +94,7 @@
 				{{outlet}}
 			</div>
 		</div>
+	</div>
 	 </script>
 
 	<script type="text/x-handlebars" id="post">
@@ -150,6 +163,127 @@
 
     {{yield}}
   </script>
+
+  <script type="text/x-handlebars" id="cv-portugues">
+  	<link rel="stylesheet" href="/style/css/cv.css">
+  	<link rel="stylesheet" media="print" href="/style/css/cv-print.css">
+  	<section class="container container-cv">
+
+			<!-- Header -->
+			<header class="row">
+				<div class="title col-md-8 col-sm-8">
+					<img class="img" width="105" height="140" src="style/img/grad-profile.png" title="That`s me!" alt="My Profile"/>
+					<h1>David Adler</h1>
+					<h2>graduate neuroscientist come web developer</h2>
+				</div>
+				<div class="social col-md-4 col-sm-4">
+					<ul>
+						<li><i class="fa fa-home"></i> 2851 Avenida Brigadeiro Luis Antonio, Sao Paulo</li>
+						<li><i class="fa fa-envelope"></i> <small>dalberto.adler@gmail.com</small></li>
+						<li><i class="fa fa-phone"></i> 00447891946982</li>
+						<li>
+							<a class="a-cv" href="#" ><i class="fa fa-twitter" ></i></a>
+							<a class="a-cv" href="#" ><i class="fa fa-facebook" ></i></a>
+							<a class="a-cv" href="#" ><i class="fa fa-google-plus" ></i></a>
+							<a class="a-cv" href="https://github.com/mfbx9da4/" ><i class="fa fa-github" ></i></a>
+						</li>
+					</ul>
+				</div>	
+			</header>
+
+			<!-- Skills -->
+			<article class="row">
+				<header class="col-md-3">
+					<h3>Skills</h3>
+				</header>
+				<div class="col-md-9">
+					<div class="row skills">
+						<ul class="col-md-6 col-sm-6">
+							<li><h4>Programacao</h4></li>
+							<li><strong>python</strong> - 3.5 years experience</li>
+							<li><strong>javascript</strong> - 3.5 years experience</li>
+							<li><strong>css</strong> - 3 years experience</li>
+							<li><strong>html</strong> - Lorem ipsum dolor sit amet</li>
+							<li><strong>nodejs</strong> - Lorem ipsum dolor sit amet</li>
+							<li><strong>C</strong> - Lorem ipsum dolor sit amet</li>
+						</ul>
+						<ul class="col-md-6 col-sm-6">
+							<li><h4>Languages</h4></li>
+							<li><strong>English</strong> - Nativo </li>
+							<li><strong>Português</strong> - Avancado</li>
+							<li><strong>French</strong> - Avancado</li>
+							<li><strong>Spanish</strong> - Intermedio</li>
+						</ul>
+					</div>
+				</div>
+			</article>
+
+			<!-- Education -->
+			<article class="row">
+				<header class="col-md-3">
+					<h3>Education</h3>
+				</header>
+				<div class="col-md-9">
+					<h4>2:1 BSc Neuroscience, University of Manchester</h4>
+					<h5>2009-2013</h5>
+						<ul>
+							<li>Universidade de Manchester está em 40 º no mundo e 7 na Europa.</li>
+							<li></li>
+							<li></li>
+						</ul>
+						<ul>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					<h4>University</h4>
+					<h5>2008-2008</h5>
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua.</p>
+					<h4>Second University</h4>
+					<h5>2008-2010</h5>
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua.</p>
+				</div>
+			</article>
+
+			<!-- Work -->
+			<article class="row">
+				<header class="col-md-3">
+					<h3>Work Experience</h3>
+				</header>
+				<div class="col-md-9">
+					<h4>My First Job </h4>
+					<h5>1960-2008</h5>
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua.</p>
+					<h4>Second Job</h4>
+					<h5>2008-2013</h5>
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua.</p>
+				</div>
+			</article>
+
+			<!-- Interests -->
+			<article class="row">
+				<header class="col-md-3">
+					<h3>Interests</h3>
+				</header>
+				<div class="col-md-9">
+					<h4>Traveling</h4>
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua</p>
+					<h4>Reading</h4>
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua</p>
+					<h4>Books</h4>
+					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua</p>
+				</div>
+			</article>
+
+			<!-- Footer -->
+			<footer>
+				&copy; 2013 David Adler 
+				<a class="a-cv" href="#">Download as PDF</a> | <a class="a-cv" href="#" onclick="javascript:window.print();">Print</a> 
+			
+			</footer>
+	</section>
+  </script>
+
 
 	<script src="output/libs.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="output/app.min.js" type="text/javascript" charset="utf-8"></script>
