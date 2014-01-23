@@ -31,20 +31,14 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active">{{#link-to "posts"}}Blog{{/link-to}}</li>
-            <li><a href="http://davidadler.me">CV</a></li>
-            <li><a href="http://davidadlersapp.appspot.com/#contact">Contact</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">CV <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+                <li><a href="http://davidadler.me">Interactive</a></li>
+                <li><a href="http://davidadler.me/static/files/cv.pdf">PDF</a></li>
               </ul>
             </li>
+            <li><a href="http://davidadlersapp.appspot.com/#contact">Contact</a></li>
           </ul>
           <form class="navbar-form navbar-right" role="form">
             <div class="form-group">
@@ -129,6 +123,10 @@
 
 	<script type="text/x-handlebars" id="post/edit">
 	<div class="col-md-6">
+    {{#side-panel}}
+      <p>put your content here</p>
+    {{/side-panel}}
+
 		<button class="btn btn-success"{{action "save"}}> ok </button>
 		<div class="post-edit">
 			 <h2>Post title</h2>
@@ -137,11 +135,21 @@
 			 {{textarea name="editor" value=article}}<br>
 			 <div id="editor"></div>
 			 {{aceEditor}}
+
 			 <br>
 		</div>
 	</div>
 
 	</script>
+
+
+  <script type="text/x-handlebars" id="components/side-panel">
+    <button {{action "toggleSidepanel"}} class="btn-toggle">
+      {{#if isOpen}} close {{else}} open {{/if}}
+    </button>
+
+    {{yield}}
+  </script>
 
 	<script src="output/libs.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="output/app.min.js" type="text/javascript" charset="utf-8"></script>

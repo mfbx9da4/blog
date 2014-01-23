@@ -106,7 +106,7 @@ Ember.Handlebars.helper('aceEditor', function() {
         editor.getSession().on('change', function() {
             textarea.val(editor.getSession().getValue()).trigger('change');
         });
-    }, 2000);
+    }, 1);
 });App.Post = DS.Model.extend({
   title         : DS.attr('string'),
   article       : DS.attr('string'),
@@ -143,14 +143,19 @@ App.PostsCreateRoute = Ember.Route.extend({
         var posts = this.store.find('post');
         return posts;
     }
-});// App.PostEditView = Ember.TextField.extend({
-//  formBlurred: null, // passed to the view helper as formBlurred=controllerPropertyName
-//  change: function(evt) {
-//      // should save on ctrl + s
-//  },
-//  didInsertElement: function() {
-//      this.set('elementIsInserted', true);
-//      this._super();
-//  },
-// });
-// // {{view PostEdit value=article}}
+});App.SidePanelComponent = Em.Component.extend({
+    tagName: 'div',
+    classNames: ['sidepanel', 'whatever'],
+    classNameBindings: ['isOpen:opened:closed'],
+    
+    isOpen: false,
+    
+    actions: {
+      toggleSidepanel: function(){
+          this.toggleProperty('isOpen');
+      }
+    },
+    didInsertElement: function () {
+        console.log('here');
+    }
+});

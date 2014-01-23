@@ -18,5 +18,5 @@ Ember.Handlebars.helper('aceEditor', function() {
         editor.getSession().on('change', function() {
             textarea.val(editor.getSession().getValue()).trigger('change');
         });
-    }, 2000);
+    }, 1);
 });
