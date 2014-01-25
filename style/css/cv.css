@@ -4,6 +4,7 @@
  *  Author: Uvis Grinfelds
  */
 /* Borders and Spacing */
+@import url(http://fonts.googleapis.com/css?family=Andada);
 body {
   font-family: Source Sans Pro, Open Sans, Helvetica, Arial, sans-serif;
   background-color: #1F1F1F;
@@ -50,10 +51,12 @@ table.logo-label > tbody > tr > td ~ td {
 
 .bullets ul {
   list-style-type: none;
+  margin-left: -13px;
 }
 .bullets ul li:before {
     content: "⚪ ";
     color: CadetBlue; /* or whatever color you prefer */
+    margin-left: -16px;
 }
 .skills {
   border: 0;
@@ -72,7 +75,7 @@ table.logo-label > tbody > tr > td ~ td {
   transition: color 0.2s ease-out, background 0.2s ease-in;
 }
 .a-cv:hover {
-  color: #2a9fd6 !important;
+  color: #4183c4 !important;
   background: #F9F9F9 !important;
   text-decoration: none !important;
 }
@@ -82,6 +85,9 @@ table.logo-label > tbody > tr > td ~ td {
 /* Typography */
 h1, h2, h3 {
   margin-top: 8px;
+}
+.title h1{
+  font-family: Andada, Open Sans, Helvetica, Arial, sans-serif;
 }
 .title h2 {
   font-size: 18px;
@@ -239,10 +245,14 @@ margin-bottom: 0px;
 
 
 @media print {
+  header.row {
+    /*margin-top: -40px;*/
+  }
   /*remove chrome links*/
   a[href]:after {
     content: none !important;
   }
+
   footer { display: none !important; }
   .col-md-1,
   .col-md-2,

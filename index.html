@@ -169,130 +169,23 @@
 
 
   <script type="text/x-handlebars" id="cv/en">
-  	<link rel="stylesheet" href="/style/css/cv.css">
-  	<section class="container container-cv">
-
-			<!-- Header -->
-			<header class="row">
-				<div class="title col-md-8 col-sm-8">
-					<img class="img" width="105" height="140" src="style/img/grad-profile.png" title="That`s me!" alt="My Profile"/>
-					<h1>David Adler</h1>
-					<h2>graduate neuroscientist come web developer</h2>
-				</div>
-				<div class="social col-md-4 col-sm-4">
-					<ul>
-						<li><i class="fa fa-home"></i> Avenida Brigadeiro Luis Antonio 2851, Sao Paulo</li>
-						<li><i class="fa fa-envelope"></i> <small>dalberto.adler@gmail.com</small></li>
-						<li><i class="fa fa-phone"></i> 00447891946982</li>
-						<li>
-							<a class="a-cv" href="#" ><i class="fa fa-twitter" ></i></a>
-							<a class="a-cv" href="#" ><i class="fa fa-facebook" ></i></a>
-							<a class="a-cv" href="#" ><i class="fa fa-google-plus" ></i></a>
-							<a class="a-cv" href="https://github.com/mfbx9da4/" ><i class="fa fa-github" ></i></a>
-						</li>
-					</ul>
-				</div>	
-			</header>
-
-			<!-- Skills -->
-			<article class="row">
-				<header class="col-md-3">
-					<h3>Skills</h3>
-				</header>
-				<div class="col-md-9">
-					<div class="row skills">
-						<ul class="col-md-6 col-sm-6">
-							<li><h4>Programming</h4></li>
-							<li><strong>python</strong> -  3 years experience, love writing clean code.</li>
-							<li><strong>javascript</strong> - 3 years experience. OOP and HTML5.</li>
-							<li><strong>C</strong> - First language, strong foundation.</li>
-						</ul>
-						<ul class="col-md-6 col-sm-6">
-							<li><h4>Languages</h4></li>
-							<li><strong>English</strong> - Native </li>
-							<li><strong>Português</strong> - Advanced</li>
-							<li><strong>French</strong> - Advanced</li>
-							<li><strong>Spanish</strong> - Intermediate</li>
-						</ul>
-					</div>
-				</div>
-			</article>
-
-			<!-- Education -->
-			<article class="row">
-				<header class="col-md-3">
-					<h3>Education</h3>
-				</header>
-				<div class="col-md-9">
-					<h4>2:1 BSc Neuroscience, University of Manchester</h4>
-					<h5>2009-2013</h5>
-						<ul>
-							<li>.</li>
-							<li></li>
-							<li></li>
-						</ul>
-						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
-						</ul>
-					<h4>University</h4>
-					<h5>2008-2008</h5>
-					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua.</p>
-					<h4>Second University</h4>
-					<h5>2008-2010</h5>
-					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua.</p>
-				</div>
-			</article>
-
-			<!-- Work -->
-			<article class="row">
-				<header class="col-md-3">
-					<h3>Work Experience</h3>
-				</header>
-				<div class="col-md-9">
-					<h4>My First Job </h4>
-					<h5>1960-2008</h5>
-					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua.</p>
-					<h4>Second Job</h4>
-					<h5>2008-2013</h5>
-					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua.</p>
-				</div>
-			</article>
-
-			<!-- Interests -->
-			<article class="row">
-				<header class="col-md-3">
-					<h3>Interests</h3>
-				</header>
-				<div class="col-md-9">
-					<h4>Traveling</h4>
-					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua</p>
-					<h4>Reading</h4>
-					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua</p>
-					<h4>Books</h4>
-					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua</p>
-				</div>
-			</article>
-
-			<!-- Footer -->
-			<footer>
-				&copy; 2013 David Adler 
-				<a class="a-cv" href="#">Download as PDF</a> | <a class="a-cv" href="#" onclick="javascript:window.print();">Print</a> 
-			
-			</footer>
-	</section>
   </script>
 
   <script type="text/x-handlebars" data-template-name="cv/pt" id="cv/pt">
   	<link rel="stylesheet" href="/style/css/cv.css">
-  	<link rel="stylesheet" media="print" href="/style/css/cv-print.css">
+  	<link rel="stylesheet" href="/style/css/lightbox.css">
   	<section class="container container-cv">
 
 			<!-- Header -->
 			<header class="row">
 				<div class="title col-md-8 col-sm-8">
-					<img class="img" width="105" height="140" src="style/img/grad-profile.png" title="That`s me!" alt="My Profile"/>
+					<a class="" data-lightbox="me" title="Graduation day" href="/style/img/me/grad-profile.png"><img class="img" data-lightbox="me" width="105" height="140" src="style/img/me/grad-profile.png" title="That`s me!" alt="My Profile"/></a>
+				    <a class="hidden" data-lightbox="me" title="Prospectus photo" href="/style/img/me/prospectus.jpg"><img src="/style/img/me/prospectus.jpg"></a>
+				    <a class="hidden" data-lightbox="me" title="Another prospectus photo, mid jump on a slackline" href="/style/img/me/prospectus-jump.jpg"><img src="style/img/me/prospectus-jump.jpg"></a>
+				    <a class="hidden" data-lightbox="me" title="In Lille, whilst cycle touring round Europe" href="/style/img/me/lille.jpg"><img src="/style/img/me/lille.jpg"></a>
+				    <a class="hidden" data-lightbox="me" title="Weekend cycling adventure mid-winter" href="/style/img/me/leeds.jpg"><img src="/style/img/me/leeds.jpg"></a>
+				    <a class="hidden" data-lightbox="me" title="My actual brain!" href="/style/img/me/brain.jpg"><img src="/style/img/me/brain.jpg"></a>
+
 					<h1>David Adler</h1>
 					<h2>formado neuroscientista passionado desenvolvedor web</h2>
 				</div>
@@ -429,7 +322,7 @@
 						<li> Mantive frontend e backend dos webstites. O web-stack incluí django, heroku e amazon storage. </Li> 
 					</ul>
 
-					<h5>Summer 2013</h5>
+					<h5>Verão 2013</h5>
 					<table class="logo-label">
 						<tbody>
 							<tr>
@@ -468,55 +361,45 @@
 						</li> 
 						<li> Fiz apresentações sobre descobertas científicas em reuniões regulares. </li> 
 					</ul>
-
-					<table class="logo-label">
-					<h5>2011-2012</h5>
-						<tbody>
-							<tr>
-								<td>
-									<a href="http://www.topimperialhomes.com/"><img title="Imperial Homes" src="/style/img/logos/imperial.png"/></a>
-								</td>
-								<td >
-									<h4>Agente Imobiliário, <small><a class="a-cv" href="http://www.topimperialhomes.com/">Imperial Homes</a>, Kensington, Londres, UK.</small>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					</h4>
-					<ul> 
-					
-					</ul>
+					<!--
+						<table class="logo-label">
+						<h5>2011-2012</h5>
+							<tbody>
+								<tr>
+									<td>
+										<a href="http://www.topimperialhomes.com/"><img title="Imperial Homes" src="/style/img/logos/imperial.png"/></a>
+									</td>
+									<td >
+										<h4>Agente Imobiliário, <small><a class="a-cv" href="http://www.topimperialhomes.com/">Imperial Homes</a>, Kensington, Londres, UK.</small>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						</h4>
+						<ul> 
+						
+						</ul>
+					-->
 				</div>
 			</article>
 
 			<!-- Interests -->
-			<article class="row">
+			<article class="row bullets">
 				<header class="col-md-3">
 					<h3>Interesses</h3>
 				</header>
 				<div class="col-md-9">
 					<h4>Programação</h4>
+					<ul>
+						<li>
+							<b>Eu amo</b> codigo! É meu hobby favorito. Aprendi sozinho e tenho uma lista de idéias de software que não para de crescer. Programação me permite exercer a minha criatividade. Acho inovar algoritmos bem divertido e gosto de aprender tecnologias novas.
+						</li>
+						<li>
+							Habilidades / línguas: <b>C</b> (Primeira língua. Construei um organizador de alimentação para terminal e experimentou com GTK.); <b>JavaScript </b> (Experiência com OOP e construção HTML5 jogos. Também construei uma sistema de referência científica para google docs. Gosto de emberjs, gruntjs, nodejs, jQuery e jqueryUI. Indeciso sobre coffeescript);. <b>Web design</b> (Confortável com animações CSS3, gimp e aprecio desenvolver front-end para fins funcionais. Um fã de SASS e stylus);. <b>Web dev</b> (Usei django, google app engine, Heroku, php e node. Gosto front-end e backend igualmente);.. <b>Python</b> (linguagem preferida desenvolvei vários algoritmos de neural networks, vários aplicativos da web e muitos pequenos algoritmos para ProjectEuler.net. <b>Java</b> (Não há grandes projetos ainda, mas atualmente matriculados em uma Coursera curso android.) <b>Go</b> (alguma experiência, mas interessado em aprender mais.).
+						</li>
+					</ul>
 
-					<p>
-					<li>
-					<b>Eu amo</b> codigo! É meu hobby favorito. Aprendi sozinho e tenho uma lista de idéias de software que não para de crescer. Programação me permite exercer a minha criatividade. Acho inovar algoritmos bem divertido e gosto de aprender tecnologias novas.
-					</li>
-					<li>
-					Habilidades e idiomas: <b>Eu amo</b>
-					</li>
-
-					Skills/languages: C (First language. Built a terminal based meal organizer, a
-					recursive sudoku solver and experimented with GTK.); JavaScript (Love-hate
-					relationship. Comfortable, experience with OOP and building HTML5 canvas
-					games. Also built a scientiﬁc referencing system for google documents. A fan
-					of emberjs, gruntjs, backbonejs, jquery, and jqueryUI. Undecided on nodejs and
-					coﬀeescript.); Web design (Comfortable with CSS3 animations, gimp and enjoy
-					developing front end for functional purposes. A fan of SASS and stylus.); Web
-					dev (Used django, google app engine, heroku, php and node. Like front-end and
-					backend equally.); Python (Favourite language. Developed my ﬁnal year neural
-					network project in python as well as several web apps and many small algorithms
-					for ProjectEuler.net. Java (No grand projects yet but currently enrolled in a
-					coursera android course.) Go (Some experience but keen to learn more.).
+					
 
 
 
@@ -525,11 +408,17 @@
 
 					</p>
 					<h4>Slackline</h4>
-					<p>Uso o slackline como um trampolim fino e além disso foi patrocionado e participei de competições em nivel nacional (por enquanto classificado 4º lugar na Inglaterra).</p>
-					<h4>Cycling</h4>
-					<p>Gosto de cylo-tourismo e já viajei milhares de kilometros. Tambem fui voluntario de um projeto de reciclagem de bicicleta.</p>
-					<p>
-					</p>
+					<ul>
+						<li>
+							Uso o slackline como um trampolim fino e além disso foi patrocionado e participei de competições em nivel nacional (foi classificado 4º lugar na Inglaterra).
+						</li>
+					</ul>
+					<h4>Cyclismo</h4>
+					<ul>
+						<li>
+							Gosto de cylo-tourismo e já viajei milhares de kilometros na europa. 
+						</li>
+					</ul>
 				</div>
 			</article>
 

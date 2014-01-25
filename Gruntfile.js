@@ -22,8 +22,8 @@ module.exports = function(grunt) {
                     "libs/handlebars-1.1.2.js",
                     "libs/ember-1.2.0.js",
                     "libs/ember-data.js",
-                    "style/js/bootstrap.min.js",
-                    "libs/localstorage_adapter.js"
+                    "libs/lightbox-2.6.min.js",
+                    "style/js/bootstrap.min.js"
                 ],
                 dest: 'output/libs.js'
             },
