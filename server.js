@@ -82,7 +82,7 @@ setup_monk(function (db) {
     app.get('/posts/:id', posts.get_post(db));
     app.post('/posts', posts.add_post(db));
     app.put('/posts/:id', posts.update_post(db));
-    app.delete('/posts/:id', posts.delete_post());
+    app.delete('/posts/:id', posts.delete_post(db));
 
 
     http.createServer(app).listen(app.get('port'), function() {
