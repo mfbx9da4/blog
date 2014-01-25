@@ -41,7 +41,7 @@ table.logo-label {
 }
 
 table.logo-label > tbody > tr > td > a > img {
-  width: 35px;
+  width: 30px;
 }
 
 table.logo-label > tbody > tr > td ~ td {
@@ -60,6 +60,7 @@ table.logo-label > tbody > tr > td ~ td {
 }
 /* Links */
 .a-cv {
+  font-style: normal;
   color: #000000;
   border-bottom: 1px solid #dddddd;
   -o-transition: color 0.2s ease-out, background 0.2s ease-in;
@@ -115,6 +116,9 @@ h3 {
 h4 {
   font-size: 16px ;
 }
+h4 small {
+  font-style: italic;
+}
 h5 {
   font-size: 12px;
   float: right;
@@ -141,6 +145,7 @@ p {
   font-size: 20px;
   text-decoration: none;
   margin: 5px 2px;
+  border: none;
 }
 .social {
   padding: 30px 0px;
@@ -220,13 +225,26 @@ p {
 ::selection {
   background-color: #b3d4fc;
 }
+::-moz-selection {
+  background-color: #b3d4fc; /* Firefox */
+}
+
+@page{
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+margin-bottom: 0px;
+}
+
+
 
 @media print {
   /*remove chrome links*/
   a[href]:after {
     content: none !important;
   }
-    .col-md-1,
+  footer { display: none !important; }
+  .col-md-1,
   .col-md-2,
   .col-md-3,
   .col-md-4,

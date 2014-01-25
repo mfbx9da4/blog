@@ -18,3 +18,8 @@ body {
 	color: white;
 }
 
+::-moz-selection {
+	background-color: #2a9fd6;
+	color: white;
+}
+
