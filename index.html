@@ -15,7 +15,7 @@
     <![endif]-->
 </head>
 <body> 
-<script src="http://localhost:8080/livereload.js"></script>
+<script src="http://localhost:12345/livereload.js"></script>
 	<script type="text/x-handlebars" id="application">
     <div id="navbar" class="navbar navbar-default navbar-static-top" role="navigation">
       <div class="container">
@@ -30,15 +30,15 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active">{{#link-to "posts"}}Blog{{/link-to}}</li>
-            <li class="dropdown">
+            <li class="nav-blog active">{{#link-to "posts"}}Blog{{/link-to}}</li>
+            <li class="nav-cv dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">CV <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="http://davidadler.me">Interactive</a></li>
                 <li><a href="http://davidadler.me/static/files/cv.pdf">PDF</a></li>
                 <li class="divider"></li>
                 <li>
-                	{{#link-to "cv-portugues"}}
+                	{{#link-to "cv.pt"}}
                 		<div class="dropdown-flag-container">
 					    <img src="style/img/flags.png" alt="brazil flag"
 					         width="342" height="174"
@@ -49,7 +49,7 @@
             	</li>
               </ul>
             </li>
-            <li><a href="http://davidadlersapp.appspot.com/#contact">Contact</a></li>
+            <li class="nav-contact"> <a href="http://davidadlersapp.appspot.com/#contact">Contact</a></li>
           </ul>
           <form class="navbar-form navbar-right" role="form">
             <div class="form-group">
@@ -135,36 +135,29 @@
 	</script>
 
 	<script type="text/x-handlebars" id="post/edit">
-	<div class="col-md-6">
-    {{#side-panel}}
-      <p>put your content here</p>
-    {{/side-panel}}
+		<div class="col-md-6">
+	    {{#side-panel}}
+	      <p>put your content here</p>
+	    {{/side-panel}}
 
-		<button class="btn btn-success"{{action "save"}}> ok </button>
-		<div class="post-edit">
-			 <h2>Post title</h2>
-			 {{input class="form-control" value=title}}<br>
-			 <h2>Post content</h2>
-			 {{textarea name="editor" value=article}}<br>
-			 <div id="editor"></div>
-			 {{aceEditor}}
+			<button class="btn btn-success"{{action "save"}}> ok </button>
+			<div class="post-edit">
+				 <h2>Post title</h2>
+				 {{input class="form-control" value=title}}<br>
+				 <h2>Post content</h2>
+				 {{textarea name="editor" value=article}}<br>
+				 <div id="editor"></div>
+				 {{aceEditor}}
 
-			 <br>
+				 <br>
+			</div>
 		</div>
-	</div>
 
 	</script>
 
 
-  <script type="text/x-handlebars" id="components/side-panel">
-    <button {{action "toggleSidepanel"}} class="btn-toggle">
-      {{#if isOpen}} close {{else}} open {{/if}}
-    </button>
 
-    {{yield}}
-  </script>
-
-  <script type="text/x-handlebars" id="cv-portugues">
+  <script type="text/x-handlebars" id="cv/en">
   	<link rel="stylesheet" href="/style/css/cv.css">
   	<link rel="stylesheet" media="print" href="/style/css/cv-print.css">
   	<section class="container container-cv">
@@ -178,7 +171,7 @@
 				</div>
 				<div class="social col-md-4 col-sm-4">
 					<ul>
-						<li><i class="fa fa-home"></i> 2851 Avenida Brigadeiro Luis Antonio, Sao Paulo</li>
+						<li><i class="fa fa-home"></i> Avenida Brigadeiro Luis Antonio 2851, Sao Paulo</li>
 						<li><i class="fa fa-envelope"></i> <small>dalberto.adler@gmail.com</small></li>
 						<li><i class="fa fa-phone"></i> 00447891946982</li>
 						<li>
@@ -199,20 +192,17 @@
 				<div class="col-md-9">
 					<div class="row skills">
 						<ul class="col-md-6 col-sm-6">
-							<li><h4>Programacao</h4></li>
-							<li><strong>python</strong> - 3.5 years experience</li>
-							<li><strong>javascript</strong> - 3.5 years experience</li>
-							<li><strong>css</strong> - 3 years experience</li>
-							<li><strong>html</strong> - Lorem ipsum dolor sit amet</li>
-							<li><strong>nodejs</strong> - Lorem ipsum dolor sit amet</li>
-							<li><strong>C</strong> - Lorem ipsum dolor sit amet</li>
+							<li><h4>Programming</h4></li>
+							<li><strong>python</strong> -  3 years experience, love writing clean code.</li>
+							<li><strong>javascript</strong> - 3 years experience. OOP and HTML5.</li>
+							<li><strong>C</strong> - First language, strong foundation.</li>
 						</ul>
 						<ul class="col-md-6 col-sm-6">
 							<li><h4>Languages</h4></li>
-							<li><strong>English</strong> - Nativo </li>
-							<li><strong>Português</strong> - Avancado</li>
-							<li><strong>French</strong> - Avancado</li>
-							<li><strong>Spanish</strong> - Intermedio</li>
+							<li><strong>English</strong> - Native </li>
+							<li><strong>Português</strong> - Advanced</li>
+							<li><strong>French</strong> - Advanced</li>
+							<li><strong>Spanish</strong> - Intermediate</li>
 						</ul>
 					</div>
 				</div>
@@ -227,7 +217,7 @@
 					<h4>2:1 BSc Neuroscience, University of Manchester</h4>
 					<h5>2009-2013</h5>
 						<ul>
-							<li>Universidade de Manchester está em 40 º no mundo e 7 na Europa.</li>
+							<li>.</li>
 							<li></li>
 							<li></li>
 						</ul>
@@ -272,6 +262,263 @@
 					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua</p>
 					<h4>Books</h4>
 					<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua</p>
+				</div>
+			</article>
+
+			<!-- Footer -->
+			<footer>
+				&copy; 2013 David Adler 
+				<a class="a-cv" href="#">Download as PDF</a> | <a class="a-cv" href="#" onclick="javascript:window.print();">Print</a> 
+			
+			</footer>
+	</section>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="cv/pt" id="cv/pt">
+  	<link rel="stylesheet" href="/style/css/cv.css">
+  	<link rel="stylesheet" media="print" href="/style/css/cv-print.css">
+  	<section class="container container-cv">
+
+			<!-- Header -->
+			<header class="row">
+				<div class="title col-md-8 col-sm-8">
+					<img class="img" width="105" height="140" src="style/img/grad-profile.png" title="That`s me!" alt="My Profile"/>
+					<h1>David Adler</h1>
+					<h2>formado neuroscientista passionado desenvolvedor web</h2>
+				</div>
+				<div class="social col-md-4 col-sm-4">
+					<ul>
+						<li><i class="fa fa-home"></i> Avenida Brigadeiro Luis Antonio 2851, Sao Paulo</li>
+						<li><i class="fa fa-envelope"></i> <small>dalberto.adler@gmail.com</small></li>
+						<li><i class="fa fa-phone"></i> 00447891946982</li>
+						<li>
+							<a class="a-cv" href="#" ><i class="fa fa-twitter" ></i></a>
+							<a class="a-cv" href="#" ><i class="fa fa-facebook" ></i></a>
+							<a class="a-cv" href="#" ><i class="fa fa-google-plus" ></i></a>
+							<a class="a-cv" href="https://github.com/mfbx9da4/" ><i class="fa fa-github" ></i></a>
+						</li>
+					</ul>
+				</div>	
+			</header>
+
+			<!-- Skills -->
+			<article class="row">
+				<header class="col-md-3">
+					<h3>Habilidades</h3>
+				</header>
+				<div class="col-md-9">
+					<div class="row skills">
+						<ul class="col-md-6 col-sm-6">
+							<li><h4> Programação </h4> </li> 
+							<li> <strong> python </strong> - 3 anos de experiência, adoro escrever código limpo.</li>
+							<li> <strong> javascript </strong> - 3 anos de experiência. Node, OOP e HTML5. </Li> 
+							<li> <strong> C </strong> - Primeira língua, base sólida.</li>
+						</ul>
+						<ul class="col-md-6 col-sm-6">
+							<li><h4>Línguas</h4></li>
+							<li> <strong> Inglês </strong> - Nativo </li> 
+							<li> <strong> Português </strong> - Avançado </li> 
+							<li> <strong> Francês </strong> - Avançado (~ 2 anos morando na França)</li> 
+							<li> <strong> Espanhol </strong> - Intermediário (1 ano morando na Espanha)</li>
+						</ul>
+					</div>
+				</div>
+			</article>
+
+			<!-- Education -->
+			<article class="row bullets">
+				<header class="col-md-3">
+					<h3>Educação</h3>
+				</header>
+				<div class="col-md-9">
+					<h5>2009-2013</h5>
+					<table class="logo-label">
+						<tbody>
+							<tr>
+								<td>
+									<a href="http://www.manchester.ac.uk/"><img title="University of Manchester" src="/style/img/logos/uom.jpg"/></a>
+								</td>
+								<td >
+									<h4>2:1 (69%) Licenciatura Neurociência, <small>Universidade of Manchester , Reino Unido.</small></h4>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+						<ul>
+							<li> University of Manchester é classificada <a href="http://www.manchester.ac.uk/aboutus/facts/">40º no mundo e 7º na europa.</a>
+							</li>
+							<li> Desenhei projeto de dissertação sem supervisão.</li>
+							<li> Projeto (classificão A): Eu refutei a validade de um algoritmo de inteligência artificial pioneiro. Criei meu próprio modelo computacional de redes de aprendizagem do cérebro. Experiência adquirida na modelagem computacional e machine learning. 
+							</li>
+						</ul>
+					<h5>2007–2009</h5>
+					<table class="logo-label">
+						<tbody>
+							<tr>
+								<td>
+									<a href="http://www.ibstockplaceschool.co.uk/"><img title="Ibstock Place School" src="/style/img/logos/ips.jpg"/></a>
+								</td>
+								<td >
+									<h4>A-levels, <small>Ibstock Place School, Londres, UK.</small></h4>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<ul>
+						<li>  Idade 17-18 </li>
+						<li>  Física (B), Matemática (B), Biologia (B). </li> 
+						<li>  AS level: Francês (B) </li>
+					</ul>
+					<h5>2004-2006</h5>
+					<table class="logo-label">
+						<tbody>
+							<tr>
+								<td>
+									<a href="http://www.ibstockplaceschool.co.uk/"><img title="Ibstock Place School" src="/style/img/logos/ips.jpg"/></a>
+								</td>
+								<td >
+									<h4>GCSEs, <small>Ibstock Place School, Londres, UK.</small></h4>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<ul>
+						<li> Idade 16 </li>
+						<li> 1A*, 5As, 4Bs.</li>
+						<li> Além disso, o prêmio ciência triplo. </li>
+					</ul>
+				</div>
+			</article>
+
+			<!-- Work -->
+			<article class="row bullets">
+				<header class="col-md-3">
+					<h3>Trabalho</h3>
+				</header>
+				<div class="col-md-9">
+
+					<h5>Outono 2013</h5>
+					<table class="logo-label">
+						<tbody>
+							<tr>
+								<td>
+									<a href="http://www.superawesome.tv/"><img title="SuperAwesome" src="/style/img/logos/superawesome.png"/></a>
+								</td>
+								<td >
+									<h4>Desenvolvedor web, <small> SuperAwesome, Londres, UK.</small></h4>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<ul> 
+						<li> Desenvovli vários mini-jogos usando HTML5-canvas e JavaScript. </li> 
+						<li> Inovei e desenvolvi uma sistema de automatização de front-end que reduziu tempo de construção das campanhas comerciais de 5 horas para 1 minuto. </li> 
+						<li> Fiz várias apresentações sobre o automatizador front-end acima. </li> 
+						<li> Familiarizei com git merging, branching e colaboração. </li> 
+						<li> Mantive frontend e backend dos webstites. O web-stack incluí django, heroku e amazon storage. </Li> 
+					</ul>
+
+					<h5>Summer 2013</h5>
+					<table class="logo-label">
+						<tbody>
+							<tr>
+								<td>
+									<a href="http://www.sportpursuit.com/"><img title="SportPursuit" src="/style/img/logos/sportpursuit.png"/></a>
+								</td>
+								<td >
+									<h4>Analysta digital,  <small>SportPursuit, Londres, UK.</small></h4>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<ul> 
+						<li> Inovei e desenvolvi um web-app que reduziu o tempo de lançamento de propaganda de 1 hora para 10 minutos. </li> 
+						<li> Fiz a análise de dados das propaganda do facebook e Google. </li> 
+					</ul>
+
+					<table class="logo-label">
+					<h5>2011-2012</h5>
+							</tbody> 
+								<tr>
+									<td>
+										<a href="http://www.ikerbasque.net/"><img title="IkerBasque" src="/style/img/logos/ikerbasque.png"/></a>
+									</td>
+									<td>
+										<h4>Estagiei em pesquisa de neurociência, <small>Laboratory of Functional Neuroanatomy, IkerBasque, Bilbao, Espanha.</small>
+									</td>
+								</tr>
+							<tbody>
+					</table>
+					</h4>
+					<ul> 
+						<li> Investiguei alterações na morfologia celular de astrócitos no modelo triple transgenic da doença de Alzheimer. 
+						</li>
+						<li> Habilidades desenvolvidas: estatistica de dados, operação de microscopio de fluorescência e imuno-histoquímica.
+						</li> 
+						<li> Fiz apresentações sobre descobertas científicas em reuniões regulares. </li> 
+					</ul>
+
+					<table class="logo-label">
+					<h5>2011-2012</h5>
+						<tbody>
+							<tr>
+								<td>
+									<a href="http://www.topimperialhomes.com/"><img title="Imperial Homes" src="/style/img/logos/imperial.png"/></a>
+								</td>
+								<td >
+									<h4>Agente Imobiliário, <small><a href="http://www.topimperialhomes.com/">Imperial Homes</a>, Kensington, Londres, UK.</small>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					</h4>
+					<ul> 
+					
+					</ul>
+				</div>
+			</article>
+
+			<!-- Interests -->
+			<article class="row">
+				<header class="col-md-3">
+					<h3>Interesses</h3>
+				</header>
+				<div class="col-md-9">
+					<h4>Programação</h4>
+
+					<p>
+					<li>
+					<b>Eu amo</b> codigo! É meu hobby favorito. Aprendi sozinho e tenho uma lista de idéias de software que não para de crescer. Programação me permite exercer a minha criatividade. Acho inovar algoritmos bem divertido e gosto de aprender tecnologias novas.
+					</li>
+					<li>
+					Habilidades e idiomas: <b>Eu amo</b>
+					</li>
+
+					Skills/languages: C (First language. Built a terminal based meal organizer, a
+					recursive sudoku solver and experimented with GTK.); JavaScript (Love-hate
+					relationship. Comfortable, experience with OOP and building HTML5 canvas
+					games. Also built a scientiﬁc referencing system for google documents. A fan
+					of emberjs, gruntjs, backbonejs, jquery, and jqueryUI. Undecided on nodejs and
+					coﬀeescript.); Web design (Comfortable with CSS3 animations, gimp and enjoy
+					developing front end for functional purposes. A fan of SASS and stylus.); Web
+					dev (Used django, google app engine, heroku, php and node. Like front-end and
+					backend equally.); Python (Favourite language. Developed my ﬁnal year neural
+					network project in python as well as several web apps and many small algorithms
+					for ProjectEuler.net. Java (No grand projects yet but currently enrolled in a
+					coursera android course.) Go (Some experience but keen to learn more.).
+
+
+
+
+
+
+					</p>
+					<h4>Slackline</h4>
+					<p>Uso o slackline como um trampolim fino e além disso foi patrocionado e participei de competições em nivel nacional (por enquanto classificado 4º lugar na Inglaterra).</p>
+					<h4>Cycling</h4>
+					<p>Gosto de cylo-tourismo e já viajei milhares de kilometros. Tambem fui voluntario de um projeto de reciclagem de bicicleta.</p>
+					<p>
+					</p>
 				</div>
 			</article>
 

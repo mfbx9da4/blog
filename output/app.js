@@ -1,13 +1,15 @@
 window.App = Ember.Application.create();App.Router.map(function() {
 	this.resource('posts', function() {
 		this.resource('post', {
-			path: '/:post_id'
-		}, function() {
-			this.route('edit');
+				path: '/:post_id'
+			}, function() {
+				this.route('edit');
 		});
 		this.route('create');
 	});
-	this.resource('cv-portugues');
+	this.resource('cv', function () {
+		this.route('pt');
+	});
 });// App.ApplicationAdapter = DS.LSAdapter;
 DS.Store.create({
   revision: 12,
@@ -115,8 +117,6 @@ Ember.Handlebars.helper('aceEditor', function() {
   article       : DS.attr('string'),
   dateCreated   : DS.attr('date'),
   dateModified  : DS.attr('date')
-});App.CVRoute = Ember.Route.extend({
-	
 });App.IndexRoute = Ember.Route.extend({
 	redirect: function(){
 		this.transitionTo('posts');
@@ -148,19 +148,23 @@ App.PostsCreateRoute = Ember.Route.extend({
         var posts = this.store.find('post');
         return posts;
     }
-});App.SidePanelComponent = Em.Component.extend({
-    tagName: 'div',
-    classNames: ['sidepanel', 'whatever'],
-    classNameBindings: ['isOpen:opened:closed'],
-    
-    isOpen: false,
-    
-    actions: {
-      toggleSidepanel: function(){
-          this.toggleProperty('isOpen');
-      }
+});App.CvPtView = Ember.View.extend({
+    didInsertElement : function(){
+        Ember.run.scheduleOnce('afterRender', this, this.afterRenderEvent);
     },
-    didInsertElement: function () {
-        console.log('here');
-    }
+     afterRenderEvent : function () {
+            $('.navbar-nav').find('.active').removeClass('active');
+            $('.navbar-nav').find('.nav-cv').addClass('active');
+    },
+    templateName: 'cv/pt'
+});
+App.PostsView = Ember.View.extend({
+    didInsertElement : function(){
+        Ember.run.scheduleOnce('afterRender', this, this.afterRenderEvent);
+    },
+     afterRenderEvent : function () {
+            $('.navbar-nav').find('.active').removeClass('active');
+            $('.navbar-nav').find('.nav-blog').addClass('active');
+    },
+    templateName: 'posts'
 });

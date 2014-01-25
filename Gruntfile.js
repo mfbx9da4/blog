@@ -74,7 +74,7 @@ module.exports = function(grunt) {
             tasks: ['jshint', 'concat:app', 'uglify:app'],
             options: {
                 livereload: {
-                    port: 8080
+                    port: 12345
                 }
             }
         }

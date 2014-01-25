@@ -32,7 +32,28 @@ footer {
 }
 ul {
   list-style: none;
-  margin: 0px;
+  /*margin: 0px;*/
+}
+
+table.logo-label {
+  background-color: #fff;
+  border: 0;
+}
+
+table.logo-label > tbody > tr > td > a > img {
+  width: 35px;
+}
+
+table.logo-label > tbody > tr > td ~ td {
+  padding-left: 12px ;
+}
+
+.bullets ul {
+  list-style-type: none;
+}
+.bullets ul li:before {
+    content: "⚪ ";
+    color: CadetBlue; /* or whatever color you prefer */
 }
 .skills {
   border: 0;
@@ -96,6 +117,7 @@ h4 {
 }
 h5 {
   font-size: 12px;
+  float: right;
 }
 strong {
   font-weight: 400;
@@ -128,6 +150,9 @@ p {
 .social li {
   list-style: none;
 }
+.social li i {
+  padding-right: 10px;
+}
 /* Images */
 .img {
   border: 1px solid #dddddd;
@@ -158,6 +183,9 @@ p {
   .social ul {
     margin-top: 21px;
   }
+  .social li i {
+      padding-left: 10px;
+    }
 }
 @media screen and (max-width: 480px) {
   .container-cv {
@@ -189,3 +217,6 @@ p {
   }
 }
 
+::selection {
+  background-color: #b3d4fc;
+}
