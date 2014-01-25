@@ -117,7 +117,7 @@
 			</div>
 		{{/if}}
 
-		<div class="col-md-6">
+		<div class="post-container col-md-12">
 
 			 <div class="post-profile">
 				<button class="btn btn-default" {{action "edit"}}>Edit</button>
@@ -136,10 +136,6 @@
 
 	<script type="text/x-handlebars" id="post/edit">
 		<div class="col-md-6">
-	    {{#side-panel}}
-	      <p>put your content here</p>
-	    {{/side-panel}}
-
 			<button class="btn btn-success"{{action "save"}}> ok </button>
 			<div class="post-edit">
 				 <h2>Post title</h2>
@@ -147,8 +143,6 @@
 				 <h2>Post content</h2>
 				 {{textarea name="editor" value=article}}<br>
 				 <div id="editor"></div>
-				 {{aceEditor}}
-
 				 <br>
 			</div>
 		</div>
@@ -292,12 +286,13 @@
 						<li><i class="fa fa-envelope"></i> <small>dalberto.adler@gmail.com</small></li>
 						<li><i class="fa fa-phone"></i> 00447891946982</li>
 						<li>
-							<a class="a-cv" href="#" ><i class="fa fa-twitter" ></i></a>
-							<a class="a-cv" href="#" ><i class="fa fa-facebook" ></i></a>
-							<a class="a-cv" href="#" ><i class="fa fa-google-plus" ></i></a>
+							<a class="a-cv" href="https://twitter.com/da_adler" ><i class="fa fa-twitter" ></i></a>
+							<a class="a-cv" href="http://www.linkedin.com/profile/view?id=255188604" ><i class="fa fa-linkedin" ></i></a>
+							<a class="a-cv" href="http://stackoverflow.com/users/1376627/david-adler" ><i class="fa fa-stack-overflow" ></i></a>
 							<a class="a-cv" href="https://github.com/mfbx9da4/" ><i class="fa fa-github" ></i></a>
 						</li>
-					</ul>
+						  <tr>
+				  	</ul>
 				</div>	
 			</header>
 
@@ -393,7 +388,7 @@
 			<!-- Work -->
 			<article class="row bullets">
 				<header class="col-md-3">
-					<h3>Trabalho</h3>
+					<h3>Experiência</h3>
 				</header>
 				<div class="col-md-9">
 
