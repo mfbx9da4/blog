@@ -10,6 +10,7 @@ window.App = Ember.Application.create();App.Router.map(function() {
 	this.resource('cv', function () {
 		this.route('pt');
 	});
+	this.resource('about');
 });// App.ApplicationAdapter = DS.LSAdapter;
 DS.Store.create({
   revision: 12,
@@ -154,6 +155,16 @@ App.PostsView = Ember.View.extend({
         $('.navbar-nav').find('.nav-blog').addClass('active');
     },
     templateName: 'posts'
+});
+App.AboutView = Ember.View.extend({
+    didInsertElement: function() {
+        Ember.run.scheduleOnce('afterRender', this, this.afterRenderEvent);
+    },
+    afterRenderEvent: function() {
+        $('.navbar-nav').find('.active').removeClass('active');
+        $('.navbar-nav').find('.nav-about').addClass('active');
+    },
+    templateName: 'about'
 });
 App.PostEditView = Ember.View.extend({
     didInsertElement: function() {

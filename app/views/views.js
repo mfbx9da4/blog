@@ -18,6 +18,16 @@ App.PostsView = Ember.View.extend({
     },
     templateName: 'posts'
 });
+App.AboutView = Ember.View.extend({
+    didInsertElement: function() {
+        Ember.run.scheduleOnce('afterRender', this, this.afterRenderEvent);
+    },
+    afterRenderEvent: function() {
+        $('.navbar-nav').find('.active').removeClass('active');
+        $('.navbar-nav').find('.nav-about').addClass('active');
+    },
+    templateName: 'about'
+});
 App.PostEditView = Ember.View.extend({
     didInsertElement: function() {
         Ember.run.scheduleOnce('afterRender', this, this.afterRenderEvent);

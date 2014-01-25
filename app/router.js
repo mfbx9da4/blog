@@ -10,4 +10,5 @@ App.Router.map(function() {
 	this.resource('cv', function () {
 		this.route('pt');
 	});
+	this.resource('about');
 });
