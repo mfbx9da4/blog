@@ -17,7 +17,6 @@ module.exports = function(grunt) {
                     "libs/Markdown.Editor.js",
                     "libs/Markdown.Sanitizer.js",
                     "libs/jquery-2.0.3.min.js",
-                    "libs/jqueryui.js",
                     "libs/moment.min.js",
                     "libs/handlebars-1.1.2.js",
                     "libs/ember-1.2.0.js",
