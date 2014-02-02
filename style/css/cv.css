@@ -49,6 +49,22 @@ table.logo-label > tbody > tr > td ~ td {
   padding-left: 12px ;
 }
 
+table.cv-table {
+  background-color: white;
+}
+
+table.cv-table th {
+  text-align: center;
+  border-bottom: solid black;
+}
+table.cv-table  td {
+  padding: 5px;
+}
+table.cv-table tr:nth-child(even) {
+  background-color: #F1F1F1;
+}
+
+
 .bullets ul {
   list-style-type: none;
   margin-left: -13px;
