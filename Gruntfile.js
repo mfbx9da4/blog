@@ -17,12 +17,12 @@ module.exports = function(grunt) {
                     "libs/Markdown.Editor.js",
                     "libs/Markdown.Sanitizer.js",
                     "libs/jquery-2.0.3.min.js",
+                    "style/js/bootstrap.min.js",
                     "libs/moment.min.js",
                     "libs/handlebars-1.1.2.js",
                     "libs/ember-1.2.0.js",
                     "libs/ember-data.js",
-                    "libs/lightbox-2.6.min.js",
-                    "style/js/bootstrap.min.js"
+                    "libs/lightbox-2.6.min.js"
                 ],
                 dest: 'output/libs.js'
             },

@@ -23,3 +23,7 @@ body {
 	color: white;
 }
 
+.dropdown-flag-container {
+	width:19px; height:16px; overflow:hidden; position:relative; 
+	display: inline-block; top: 3px;
+}
