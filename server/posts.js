@@ -1,7 +1,20 @@
 exports.get_posts = function(db) {
     return function(req, res) {
         var collection = db.get('postcollection');
+
         collection.find({}, {}, function(e, docs) {
+            if (docs.length) {
+                docs.map(function (doc) {
+                    fs.readFile(doc.filePath, {
+                            encoding: 'utf-8'
+                        }, function(err, data) {
+                            if (err) throw err;
+                            file_data = data.toString();
+                            // sequentially delete temp, add it to db and then respond
+                            // delete_temporary(add_to_db, respond);
+                    });
+                }
+            }
             res.send(200, {
                 'posts': docs
             });
@@ -37,25 +50,15 @@ exports.add_post = function(db) {
         };
         this.insert_post = function(count) {
             // Submit to the DB
-            collection.insert({
-                'title': title,
-                'article': article,
-                'dateCreated': dateCreated,
-                'dateModified': dateModified,
-                'id': count
-            }, complete_insert);
+            collection.insert(post, complete_insert);
         };
         var complete_count = function(err, count) {
             insert_post(count);
         };
 
-        // Get our form values. These rely on the 'name' attributes
-        var title = req.body.post.title;
-        var article = req.body.post.article;
-        var dateCreated = req.body.post.dateCreated;
-        var dateModified = req.body.post.dateModified;
+        var post = req.body.post;
 
-        if (!title || !article || !dateCreated || !dateModified) {
+        if (!post.title || !post.article || !post.dateCreated || !post.dateModified) {
             res.send(404, 'hey, I am missing some info');
         }
 

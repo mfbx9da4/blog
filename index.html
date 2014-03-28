@@ -159,7 +159,11 @@
 			<button class="btn btn-success"{{action "save"}}> ok </button>
 			<div class="post-edit">
 				 <h2>Post title</h2>
-				 {{input class="form-control" value=title}}<br>
+				 {{input class="form-control" placeholder="Title" value=title}}<br>
+				 <div class="form-group">
+				    <label for="filePath">File path</label>
+				    <input type="text" class="form-control" id="filePath" placeholder="Enter file path">
+				 </div>
 				 <h2>Post content</h2>
 				 {{textarea name="editor" value=article}}<br>
 				 <div id="editor"></div>

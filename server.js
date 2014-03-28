@@ -48,6 +48,7 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var posts = require('./server/posts');
 var LOCAL_DB_URL = 'localhost:27017/nodetest1';
+var fs = require('fs');
 
 setup_monk(function (db) {
 
@@ -57,7 +58,6 @@ setup_monk(function (db) {
     });
 
     // all environments
-    app.set('port', process.env.PORT || 8000);
     app.set('views', path.join(__dirname, 'views'));
     app.use(express.favicon());
     app.use(express.logger('dev'));
@@ -70,6 +70,9 @@ setup_monk(function (db) {
     // development only
     if ('development' == app.get('env')) {
         app.use(express.errorHandler());
+        app.set('port', process.argv[3] || 8000);
+    } else {
+        app.set('port', process.env.PORT || 8000);
     }
 
     // CORS
@@ -79,11 +82,11 @@ setup_monk(function (db) {
         next();
     });
 
-    app.get('/posts', posts.get_posts(db));
-    app.get('/posts/:id', posts.get_post(db));
-    app.post('/posts', posts.add_post(db));
-    app.put('/posts/:id', posts.update_post(db));
-    app.delete('/posts/:id', posts.delete_post(db));
+    app.get('/posts', posts.get_posts(db, fs));
+    app.get('/posts/:id', posts.get_post(db, fs));
+    app.post('/posts', posts.add_post(db, fs));
+    app.put('/posts/:id', posts.update_post(db, fs));
+    app.delete('/posts/:id', posts.delete_post(db, fs));
 
 
     http.createServer(app).listen(app.get('port'), function() {

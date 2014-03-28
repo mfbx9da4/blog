@@ -11,21 +11,15 @@ window.App = Ember.Application.create();App.Router.map(function() {
 		this.route('pt');
 	});
 	this.resource('about');
-});// App.ApplicationAdapter = DS.LSAdapter;
-DS.Store.create({
+});DS.Store.create({
   revision: 12,
   adapter: DS.RESTAdapter.create({
-    namespace: '',
-
-    serializer: DS.RESTSerializer.extend({
-        primaryKey: function(type) {
-            return '_id';
-        },
-        serializeId: function(id) {
-            return id.toString();
-        }
-    })
+    namespace: ''
   })
+});
+
+App.ApplicationSerializer = DS.RESTSerializer.extend({
+  primaryKey: '_id',
 });
 
 App.PostController = Ember.ObjectController.extend({
@@ -103,6 +97,9 @@ Ember.Handlebars.helper('formatMarkdown', function(text) {
 App.Post = DS.Model.extend({
   title         : DS.attr('string'),
   article       : DS.attr('string'),
+  filePath      : DS.attr('string'),
+  urlTitle      : DS.attr('string'),
+  public		: DS.attr('boolean'),
   dateCreated   : DS.attr('date'),
   dateModified  : DS.attr('date')
 });App.IndexRoute = Ember.Route.extend({
